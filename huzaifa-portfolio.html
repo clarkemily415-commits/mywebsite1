@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Huzaifa Siddiqui – Graphic Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     HOW TO EDIT:
+     - Change name, skills, email etc. directly in the HTML below
+     - To change colors, update the variables in :root
+     - To add images, set background: url('your-image.jpg') on the relevant div
+  ============================================================ */
+
+  :root {
+    --bg:        #0a0a0f;
+    --bg2:       #111118;
+    --bg3:       #1a1a24;
+    --accent:    #c8ff00;       /* <-- Change this to update the accent color */
+    --accent2:   #7b5ea7;
+    --text:      #f0ede8;
+    --muted:     #888898;
+    --border:    rgba(200,255,0,0.15);
+    --card:      #13131c;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5vw;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 10rem 5vw 6rem;
+    position: relative;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    border-radius: 2px;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .hero-name span { color: var(--accent); }
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  .hero-tagline strong { color: var(--text); font-style: normal; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0a0f;
+  }
+  .btn-primary:hover { background: #d4ff26; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(240,237,232,0.3);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Avatar circle in hero */
+  .hero-avatar {
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    background: var(--bg3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    position: relative;
+    /* To add your photo, uncomment the lines below:
+       background: url('your-photo.jpg') center/cover no-repeat;
+       color: transparent;
+    */
+  }
+  .hero-avatar::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    border: 1px dashed rgba(200,255,0,0.3);
+    animation: spin 20s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--bg3);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 2rem 5vw;
+  }
+  .stats-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 5vw; position: relative; z-index: 1; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; }
+  .about-text p strong { color: var(--text); }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .skill-pill {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 16px;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+  }
+  .skill-pill:hover { border-color: var(--accent); color: var(--accent); transition: 0.2s; }
+
+  .skill-bars { display: flex; flex-direction: column; gap: 1.2rem; }
+  .skill-bar-item {}
+  .skill-bar-header { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px; }
+  .skill-bar-header span:last-child { color: var(--accent); font-family: 'Space Mono', monospace; font-size: 0.78rem; }
+  .bar-track {
+    height: 4px;
+    background: var(--bg3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 1.2s ease;
+  }
+
+  /* ── SERVICES ── */
+  #services {}
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .service-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .service-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+  .service-card p { color: var(--muted); font-size: 0.9rem; }
+
+  /* ── PORTFOLIO ── */
+  #portfolio { background: var(--bg2); }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .portfolio-card {
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .portfolio-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .portfolio-img {
+    width: 100%; height: 200px;
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    /* To add your project image:
+       background: url('project1.jpg') center/cover no-repeat;
+    */
+    position: relative;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .portfolio-img::after {
+    content: 'ADD IMAGE HERE';
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+  .portfolio-info { padding: 1.2rem 1.5rem; }
+  .portfolio-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+  .portfolio-info p { font-size: 0.82rem; color: var(--muted); }
+  .portfolio-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-family: 'Space Mono', monospace;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-top: 8px;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials {}
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .testimonial-card {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 1.8rem;
+  }
+  .stars { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.8rem; letter-spacing: 2px; }
+  .testimonial-text { color: var(--muted); font-size: 0.9rem; font-style: italic; margin-bottom: 1.2rem; }
+  .testimonial-author { font-weight: 600; font-size: 0.85rem; }
+  .testimonial-role { font-size: 0.75rem; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--bg2); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 1rem 1.2rem;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .contact-item:hover { border-color: var(--accent); }
+  .contact-item-icon {
+    width: 40px; height: 40px;
+    background: var(--bg3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .contact-item-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .contact-item-value { font-size: 0.9rem; font-weight: 500; }
+
+  /* Contact Form */
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .form-group input,
+  .form-group textarea {
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg);
+    border-top: 0.5px solid var(--border);
+    padding: 2rem 5vw;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+    position: relative; z-index: 1;
+  }
+  footer span { color: var(--accent); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-avatar { width: 150px; height: 150px; font-size: 3.5rem; justify-self: center; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    nav { padding: 1rem 4vw; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.75rem; }
+  }
+
+  /* ── SCROLL ANIMATION ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── CURSOR DOT ── */
+  .cursor {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+    mix-blend-mode: difference;
+  }
+</style>
+</head>
+<body>
+
+<!-- Cursor effect -->
+<div class="cursor" id="cursor"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <!-- EDIT: Change to your initials or logo text -->
+  <a href="#home" class="nav-logo">MHS</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="home">
+  <div class="hero-grid">
+    <div class="hero-content reveal">
+      <!-- EDIT: Update this tag line -->
+      <span class="hero-tag">Graphic Designer · 2 Years Experience</span>
+
+      <!-- EDIT: Change to your name -->
+      <h1 class="hero-name">
+        MUHAMMAD<br>
+        HUZAIFA<br>
+        <span>SIDDIQUI</span>
+      </h1>
+
+      <!-- EDIT: Update your tagline -->
+      <p class="hero-tagline">
+        <strong>Design that speaks before you do.</strong><br>
+        Logo Design · Branding · Typography · Video Editing
+      </p>
+
+      <div class="hero-btns">
+        <!-- EDIT: Update WhatsApp number if it changes -->
+        <a href="https://wa.me/923201064298" class="btn btn-primary" target="_blank">WhatsApp Me</a>
+        <a href="#portfolio" class="btn btn-outline">View Portfolio</a>
+      </div>
+    </div>
+
+    <!-- EDIT: To add your photo, set background-image inside .hero-avatar in CSS -->
+    <div class="hero-avatar reveal">HS</div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <!-- EDIT: Update these numbers to match your experience -->
+    <div>
+      <div class="stat-num">2+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div>
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Projects Done</div>
+    </div>
+    <div>
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Happy Clients</div>
+    </div>
+    <div>
+      <div class="stat-num">4</div>
+      <div class="stat-label">Core Skills</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">// About Me</div>
+    <h2 class="section-title">WHO AM I</h2>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <!-- EDIT: Write about yourself here -->
+        <p>
+          I'm <strong>Muhammad Huzaifa Siddiqui</strong> — a passionate Graphic Designer with
+          <strong>2 years</strong> of solid experience building visual identities for brands.
+        </p>
+        <p>
+          My work is more than just design — it's <strong>telling a story</strong>. Every logo, every
+          brand identity carries a message that reaches the right audience.
+        </p>
+        <p>
+          From Logo Design to Typography and Video Editing, I bring both
+          <strong>creativity and precision</strong> to every project.
+        </p>
+
+        <!-- EDIT: Add or remove skills here -->
+        <div class="skills-list">
+          <span class="skill-pill">Logo Design</span>
+          <span class="skill-pill">Branding</span>
+          <span class="skill-pill">Typography</span>
+          <span class="skill-pill">Video Editing</span>
+          <span class="skill-pill">Adobe Illustrator</span>
+          <span class="skill-pill">Photoshop</span>
+          <span class="skill-pill">Canva Pro</span>
+          <span class="skill-pill">Premiere Pro</span>
+        </div>
+      </div>
+
+      <div class="skill-bars">
+        <!-- EDIT: Update skill names and percentages here -->
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Logo Design</span><span>90%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Branding</span><span>85%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Typography</span><span>88%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-header"><span>Video Editing</span><span>65%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:65%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">// What I Do</div>
+    <h2 class="section-title">MY SERVICES</h2>
+    <div class="services-grid">
+      <!-- EDIT: Add or edit your services here -->
+      <div class="service-card reveal">
+        <span class="service-icon">◈</span>
+        <h3>Logo Design</h3>
+        <p>Professional and memorable logos that capture the soul of your brand. Every mark tells a story.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">◉</span>
+        <h3>Brand Identity</h3>
+        <p>Complete branding packages — logo, colors, fonts, business cards, and guidelines to keep your brand consistent.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">◎</span>
+        <h3>Typography Design</h3>
+        <p>Custom type treatments, font pairing, and typographic layouts that are visually powerful and highly readable.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">▶</span>
+        <h3>Video Editing</h3>
+        <p>Reels, YouTube videos, and promotional content — smooth cuts, transitions, and color grading included.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">▣</span>
+        <h3>Social Media Design</h3>
+        <p>Instagram posts, banners, stories — scroll-stopping visuals that match your brand voice perfectly.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">◐</span>
+        <h3>Print Design</h3>
+        <p>Business cards, flyers, brochures, and posters — print-ready files delivered with professional quality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="section-tag">// My Work</div>
+    <h2 class="section-title">PORTFOLIO</h2>
+    <div class="portfolio-grid">
+      <!-- EDIT: Update each card with your project name, description, and image -->
+      <!-- To add an image: add style="background: url('project1.jpg') center/cover no-repeat;" to .portfolio-img div -->
+
+      <div class="portfolio-card reveal">
+        <div class="portfolio-img"></div>
+        <div class="portfolio-info">
+          <h3>Project Name 1</h3>
+          <p>Add your project description here — client name, what you made, and the result.</p>
+          <span class="portfolio-tag">Logo Design</span>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal">
+        <div class="portfolio-img"></div>
+        <div class="portfolio-info">
+          <h3>Project Name 2</h3>
+          <p>Add your project description here — client name, what you made, and the result.</p>
+          <span class="portfolio-tag">Branding</span>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal">
+        <div class="portfolio-img"></div>
+        <div class="portfolio-info">
+          <h3>Project Name 3</h3>
+          <p>Add your project description here — client name, what you made, and the result.</p>
+          <span class="portfolio-tag">Typography</span>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal">
+        <div class="portfolio-img"></div>
+        <div class="portfolio-info">
+          <h3>Project Name 4</h3>
+          <p>Add your project description here — client name, what you made, and the result.</p>
+          <span class="portfolio-tag">Video Editing</span>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal">
+        <div class="portfolio-img"></div>
+        <div class="portfolio-info">
+          <h3>Project Name 5</h3>
+          <p>Add your project description here — client name, what you made, and the result.</p>
+          <span class="portfolio-tag">Social Media</span>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal">
+        <div class="portfolio-img"></div>
+        <div class="portfolio-info">
+          <h3>Project Name 6</h3>
+          <p>Add your project description here — client name, what you made, and the result.</p>
+          <span class="portfolio-tag">Brand Identity</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="section-tag">// Client Reviews</div>
+    <h2 class="section-title">WHAT THEY SAY</h2>
+    <div class="testimonials-grid">
+      <!-- EDIT: Replace with your real client reviews -->
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Huzaifa designed our logo and it was love at first sight. Extremely professional work and great attention to detail."</p>
+        <div class="testimonial-author">Ali Hassan</div>
+        <div class="testimonial-role">Business Owner</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The brand identity was spot-on. Colors, fonts, everything was exactly what I had in mind. Highly recommended!"</p>
+        <div class="testimonial-author">Sara Ahmed</div>
+        <div class="testimonial-role">Startup Founder</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★☆</div>
+        <p class="testimonial-text">"Clean and professional video editing. Quick delivery and revisions handled without any fuss. Great experience overall."</p>
+        <div class="testimonial-author">Usman Raza</div>
+        <div class="testimonial-role">Content Creator</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">// Get In Touch</div>
+    <h2 class="section-title">CONTACT</h2>
+    <div class="contact-grid reveal">
+
+      <div class="contact-info">
+        <!-- EDIT: Update your contact details here -->
+        <a href="mailto:siddiquihuzaifa150@gmail.com" class="contact-item">
+          <div class="contact-item-icon">✉</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value">siddiquihuzaifa150@gmail.com</div>
+          </div>
+        </a>
+
+        <a href="https://wa.me/923201064298" class="contact-item" target="_blank">
+          <div class="contact-item-icon">💬</div>
+          <div>
+            <div class="contact-item-label">WhatsApp</div>
+            <div class="contact-item-value">+92 320 1064298</div>
+          </div>
+        </a>
+
+        <!-- EDIT: Add your social media links here -->
+        <a href="#" class="contact-item">
+          <div class="contact-item-icon">▶</div>
+          <div>
+            <div class="contact-item-label">Instagram</div>
+            <div class="contact-item-value">@your_handle_here</div>
+          </div>
+        </a>
+
+        <a href="#" class="contact-item">
+          <div class="contact-item-icon">in</div>
+          <div>
+            <div class="contact-item-label">LinkedIn</div>
+            <div class="contact-item-value">Muhammad Huzaifa Siddiqui</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="John Smith">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell me about your project..."></textarea>
+        </div>
+        <!-- EDIT: Form sends message via WhatsApp — update number in the JS below if it changes -->
+        <button class="btn btn-primary" onclick="sendWhatsApp()">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <!-- EDIT: Update your name here -->
+  <p>© 2026 <span>Muhammad Huzaifa Siddiqui</span> · Designed with passion in Karachi 🇵🇰</p>
+</footer>
+
+<script>
+  // ── Cursor ──
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX - 4 + 'px';
+    cursor.style.top = e.clientY - 4 + 'px';
+  });
+
+  // ── Scroll Reveal ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // ── WhatsApp Form ──
+  function sendWhatsApp() {
+    const name = document.querySelector('input[type="text"]').value;
+    const email = document.querySelector('input[type="email"]').value;
+    const msg = document.querySelector('textarea').value;
+    // EDIT: Update WhatsApp number here if it changes
+    const phone = '923201064298';
+    const text = encodeURIComponent(`Hi Huzaifa!\nI'm ${name || 'a potential client'}.\nEmail: ${email}\n\n${msg}`);
+    window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+  }
+</script>
+</body>
+</html>
